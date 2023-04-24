@@ -8,7 +8,8 @@ frappe.query_reports["Project Details"] = {
 			'label':__('Project'),
 			'fieldname':'project',
 			'fieldtype':'Link',
-			'options':'Project'
+			'options':'Project',
+			'reqd':'1'
 		},
 		{
 			'label':'Is Milestone',

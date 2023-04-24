@@ -2,10 +2,10 @@
 
 <style>
     *{
-        color:#0b3594;
+        color:#0b5394;
     }
     .print-format .table:not(.detailTable) tr th{
-        background-color: #0b3594!important;
+        background-color: #0b5394!important;
         color: white;
         text-align: center;
         font-weight: bold;
@@ -20,21 +20,24 @@
     }
 </style>
 
-<!-- Header -->
-
-<h2 style="color:#0b3594;font-weight:700;">Craft Interactive | {%= filters.project %}</h2>
 
 <div>
     <table style="width: 100%;">
         <tr>
-            <td style="width:80%">
+            <td>
+                <!-- Header -->
+                <h2 style="color:#0b5394;font-weight:700;">Craft Interactive | {%= filters.project %}</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <!-- Project Details -->
 
                 {% var detail_row = data.length-1 %}
                 
                 <div class="table_div">
-                    <table class="table table-borderless detailTable">
-                        <tr><th style="width:15%">Project Title</th><td>{%= filters.project %}</td><th style="width:15%">Company Name</th><td>{%= data[detail_row]["company"]%}</td></tr>
+                    <table class="table table-bordered detailTable">
+                        <tr><th style="width:15%">Project Title</th><td>{%= data[detail_row]["project_title"] %}</td><th style="width:15%">Company Name</th><td>{%= data[detail_row]["company"]%}</td></tr>
                         <tr><th>Project Manager</th><td>{%= data[detail_row]["project_manager"] %}</td><th>Date</th><td>{%= frappe.datetime.str_to_user(data[detail_row]["date"])%}</td></tr>
                     </table>
                 </div>
@@ -49,7 +52,7 @@
                             {% } else { %}
                             <tr><th colspan="7">Project Details</th></tr>
                             {% } %}
-                            <tr style="font-size: 9px;">
+                            <tr style="font-size: 9px;font-weight: 700;">
                                 <th style="width:15%">Status</th>
                                 <th style="width:10%">Start Date</th>
                                 <th style="width:10%">End Date</th>
@@ -67,11 +70,15 @@
                             {% for(var i=0; i<data_length; i++) { %}
                             <tr>
                                 <td>{%= data[i]["status"] %}</td>
-                                <td align="center">{%= frappe.datetime.str_to_user(data[i]["exp_start_date"])%}</td>
-                                <td align="center">{%= frappe.datetime.str_to_user(data[i]["exp_end_date"])%}</td>
+                                <td align="center">{%= frappe.datetime.str_to_user(data[i]["actual_start_date"])%}</td>
+                                <td align="center">{%= frappe.datetime.str_to_user(data[i]["completed_on"])%}</td>
                                 <td align="center">{%= data[i]["expected_time"]%}</td>
                                 <td>{%= data[i]["subject"]%}</td>
-                                <td align="center">{%= data[i]["employee_name"]%}</td>
+                                <td align="center">
+                                    {% if (data[i]["teams_involved"])  { %}
+                                    {%= data[i]["teams_involved"]%}
+                                    {% } %}
+                                </td>
                                 <td>{%= data[i]["description"] %}</td>
                                 {% if (filters.show_priorities) { %}
                                 <td>{%= data[i]["priority"] %}</td>
