@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<style>
+    *{
+        color:#0b3594;
+    }
+    .print-format .table:not(.detailTable) tr th{
+        background-color: #0b3594!important;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .print-format table.detailTable tr th{
+        color:black;
+        text-transform: uppercase;
+    }
+    .print-format .table{
+        margin:0px;
+    }
+</style>
+
+<!-- Header -->
+
+<h2 style="color:#0b3594;font-weight:700;">Craft Interactive | {%= filters.project %}</h2>
+
+<div>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width:80%">
+                <!-- Project Details -->
+
+                {% var detail_row = data.length-1 %}
+                
+                <div class="table_div">
+                    <table class="table table-borderless detailTable">
+                        <tr><th style="width:15%">Project Title</th><td>{%= filters.project %}</td><th style="width:15%">Company Name</th><td>{%= data[detail_row]["company"]%}</td></tr>
+                        <tr><th>Project Manager</th><td>{%= data[detail_row]["project_manager"] %}</td><th>Date</th><td>{%= frappe.datetime.str_to_user(data[detail_row]["date"])%}</td></tr>
+                    </table>
+                </div>
+                
+                <!-- Task List -->
+                
+                <div class="table_div" style="margin-top: 10px;">
+                    <table class="table table-bordered table-condensed">
+                        <thead style="display: table-header-group;">
+                            {% if (filters.show_priorities) { %}
+                            <tr><th colspan="8">Project Details</th></tr>
+                            {% } else { %}
+                            <tr><th colspan="7">Project Details</th></tr>
+                            {% } %}
+                            <tr style="font-size: 9px;">
+                                <th style="width:15%">Status</th>
+                                <th style="width:10%">Start Date</th>
+                                <th style="width:10%">End Date</th>
+                                <th style="width:5%">Duration</th>
+                                <th style="width:20%">Task Name</th>
+                                <th style="width:10%">Assignee</th>
+                                <th>Description</th>
+                                {% if (filters.show_priorities) { %}
+                                <th style="width:7%">Priority</th>
+                                {% } %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% var data_length = data.length-1 %}
+                            {% for(var i=0; i<data_length; i++) { %}
+                            <tr>
+                                <td>{%= data[i]["status"] %}</td>
+                                <td align="center">{%= frappe.datetime.str_to_user(data[i]["exp_start_date"])%}</td>
+                                <td align="center">{%= frappe.datetime.str_to_user(data[i]["exp_end_date"])%}</td>
+                                <td align="center">{%= data[i]["expected_time"]%}</td>
+                                <td>{%= data[i]["subject"]%}</td>
+                                <td align="center">{%= data[i]["employee_name"]%}</td>
+                                <td>{%= data[i]["description"] %}</td>
+                                {% if (filters.show_priorities) { %}
+                                <td>{%= data[i]["priority"] %}</td>
+                                {% } %}
+                            </tr>
+                            {% } %}
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+            <!-- <td style="background-color: #eee;">
+                <table class="table table-borderless detailTable">
+                    <tr><th>Status Key</th><th>Priority Key</th></tr>
+                    <tr><td>On Hold</td><td>Low</td></tr>
+                    <tr><td>Not Yet Started</td><td>Medium</td></tr>
+                    <tr><td>In Progress</td><td>High</td></tr>
+                    <tr><td>Completed</td><td>Urgent</td></tr>
+                </table>
+            </td> -->
+        </tr>
+    </table>
+</div>
