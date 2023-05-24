@@ -78,11 +78,11 @@ def get_columns(filters):
 			'fieldname':'employee_name',
 			'fieldtype':'Data',
 		},
-		# {
-		# 	'label':_('Assignee'),
-		# 	'fieldname':'teams_involved',
-		# 	'fieldtype':'Data',
-		# },
+		{
+			'label':_('Assignee'),
+			'fieldname':'teams_involved',
+			'fieldtype':'Data',
+		},
 		{
 			'label':'Project',
 			'fieldname':'project',
