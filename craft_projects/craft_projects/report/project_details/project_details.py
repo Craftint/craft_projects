@@ -90,6 +90,12 @@ def get_columns(filters):
 			'options':'Project'
 		},
 		{
+			'label':'Type',
+			'fieldname':'type',
+			'fieldtype':'Link',
+			'options':'Task Type',
+		},
+		{
 			'label':'Task Description',
 			'fieldname': 'description',
 			'fieldtype':'Text Editor'
@@ -126,6 +132,8 @@ def get_data(filters):
 	except:
 		data = tasks
 
+	type_weight = get_task_type_dict(data)
+
 	# Get details
 	project_manager = ""
 	project_title = ""
@@ -137,6 +145,23 @@ def get_data(filters):
 
 	date = frappe.utils.nowdate()
 
-	data.append({"project_title":project_title,"company":company, "project_manager": project_manager, "date":date})
+	data.append({"project_title":project_title,"company":company, "project_manager": project_manager, "date":date, "type_weight":type_weight})
 
 	return data
+
+def get_task_type_dict(data):
+	types = []
+	type_weight = []
+
+	for row in data:
+		types.append(row["type"])
+	
+	types = list(set(types))
+
+	for type in types:
+		type_weight.append({"type": type, "weight": frappe.db.get_value("Task Type", type, "weight")})
+		
+	type_weight = sorted(type_weight, key=lambda d:d["weight"])
+
+	return type_weight
+	

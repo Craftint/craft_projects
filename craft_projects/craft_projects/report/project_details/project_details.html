@@ -21,6 +21,14 @@
     .print-format .table{
         margin:0px;
     }
+    .print-format .subheading{
+        text-align: center;
+        text-transform: uppercase;
+        color: black;
+        font-weight: 900;
+        border-right:1px solid white;
+        border-left:1px solid white;
+    }
 </style>
 
 
@@ -69,24 +77,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% var data_length = data.length-1 %}
-                            {% for(var i=0; i<data_length; i++) { %}
-                            <tr>
-                                <td>{%= data[i]["status"] %}</td>
-                                <td align="center">{%= frappe.datetime.str_to_user(data[i]["actual_start_date"])%}</td>
-                                <td align="center">{%= frappe.datetime.str_to_user(data[i]["completed_on"])%}</td>
-                                <td align="center">{%= data[i]["expected_time"]%}</td>
-                                <td>{%= data[i]["subject"]%}</td>
-                                <td align="center">
-                                    {% if (data[i]["teams_involved"])  { %}
-                                    {%= data[i]["teams_involved"]%}
-                                    {% } %}
-                                </td>
-                                <td>{%= data[i]["description"] %}</td>
+                            {% var type_weight = data[detail_row]["type_weight"] %}
+                            {% var type_length = type_weight.length %}
+                            
+                            {% for(var j=0; j<type_length; j++) { %}
                                 {% if (filters.show_priorities) { %}
-                                <td>{%= data[i]["priority"] %}</td>
+                                <tr><td colspan="8" class="subheading">{%= type_weight[j]["type"] %}</td></tr>
+                                {% } else { %}
+                                <tr><td colspan="7" class="subheading">{%= type_weight[j]["type"] %}</td></tr>
                                 {% } %}
-                            </tr>
+                                {% var data_length = data.length-1 %}
+                                {% for(var i=0; i<data_length; i++) { %}
+                                    {% if (data[i]["type"] == type_weight[j]["type"]) { %}
+                                    <tr>
+                                        <td>{%= data[i]["status"] %}</td>
+                                        <td align="center">{%= frappe.datetime.str_to_user(data[i]["actual_start_date"])%}</td>
+                                        <td align="center">{%= frappe.datetime.str_to_user(data[i]["completed_on"])%}</td>
+                                        <td align="center">{%= data[i]["expected_time"]%}</td>
+                                        <td>{%= data[i]["subject"]%}</td>
+                                        <td align="center">
+                                            {% if (data[i]["teams_involved"])  { %}
+                                            {%= data[i]["teams_involved"]%}
+                                            {% } %}
+                                        </td>
+                                        <td>{%= data[i]["description"] %}</td>
+                                        {% if (filters.show_priorities) { %}
+                                        <td>{%= data[i]["priority"] %}</td>
+                                        {% } %}
+                                    </tr>
+                                    {% } %}
+                                {% } %}
                             {% } %}
                         </tbody>
                     </table>
