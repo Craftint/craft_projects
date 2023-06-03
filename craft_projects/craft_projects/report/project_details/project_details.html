@@ -1,34 +1,131 @@
 <!DOCTYPE html>
 
 <style>
-    *{
-        color:#0b5394;
+
+.print-format.landscape {
+	max-width: 11.7in;
+	padding: 0.2in;
+}
+
+.print-format {
+    font-size: 12px;
+    background: white;
+    font-family: sans-serif;
+}
+
+.print-heading {
+    border-bottom: 1px solid black;
+    font-weight: 800;
+    padding: 1px;
+    margin-bottom: 2px;
+    margin-top: 1px;
+    color:black;
+}
+
+.print-heading h2 {
+    font-size: 20px;
     }
-    .print-format{
-        font-family:"Calibri", sans-serif;
-    }
-    .print-format .table:not(.detailTable) tr th{
-        background-color: #0b5394!important;
-        color: white;
-        text-align: center;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-    .print-format table.detailTable tr th{
-        color:black;
-        text-transform: uppercase;
-    }
-    .print-format .table{
-        margin:0px;
-    }
-    .print-format .subheading{
+
+.print-heading h2 div {
+    font-weight: 400;
+    padding-bottom: 1px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    color: black;
+}
+
+.print-heading small {
+    font-size: 13px !important;
+    font-weight: normal;
+    line-height: 1;
+    color: black;
+    margin-top: 1px;
+}
+
+.print-format .letter-head {
+    margin-bottom: 1px;
+}
+
+.print-format label {
+    font-weight: 600;
+    font-size: 12px;
+    color: #002f59;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+.print-format .data-field {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.print-format .value {
+    color: black;
+    line-height: 1.2;
+}
+
+.print-format .section-break:not(:last-child) {
+border-bottom: 1px solid black;
+    margin-bottom: 1;
+    margin-top: 1;
+    color:black;
+}
+
+.print-format .row:not(.section-break) {
+    line-height: 1;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    color:black;
+}
+
+.print-format .important .value {
+    font-size: 13px;
+    font-weight: 600;
+    
+}
+
+.print-format th {
+    color: #e3e3e3 !important;
+    background-color: #002f59 !important;
+    text-transform: uppercase;
+    vertical-align: middle !important;
+    font-weight: 900;
+    font-size: 10px !important;
+    text-align: center;
+    border-bottom-width: 1px !important;
+}
+
+.print-format .table-bordered td, .print-format .table-bordered th {
+    border: 1px solid; color : black;
+    
+}
+
+.print-format .table-bordered {
+    vertical-align: middle !important;
+    border: 1px solid; color:black;
+}
+
+.print-format td, .print-format th {
+    vertical-align: middle !important;
+    font-size: 10px !important;
+    padding: 2px !important;
+}
+
+.print-format .primary.compact-item {
+    vertical-align: middle !important;
+    font-weight: normal;
+    color:black;
+}
+
+.print-format .subheading{
         text-align: center;
         text-transform: uppercase;
         color: black;
         font-weight: 900;
-        border-right:1px solid white;
-        border-left:1px solid white;
+        border-right:1px solid white!important;
+        border-left:1px solid white!important;
     }
+
 </style>
 
 
@@ -37,7 +134,7 @@
         <tr>
             <td>
                 <!-- Header -->
-                <h2 style="color:#0b5394;font-weight:700;">Craft Interactive | {%= filters.project %}</h2>
+                <h2 style="color:#002f59;font-weight:700;margin:0px;">Craft Interactive | {%= filters.project %}</h2>
             </td>
         </tr>
         <tr>
@@ -47,7 +144,7 @@
                 {% var detail_row = data.length-1 %}
                 
                 <div class="table_div">
-                    <table class="table table-bordered detailTable">
+                    <table class="table table-bordered detailTable" style="margin-top:5px;">
                         <tr><th style="width:15%">Project Title</th><td>{%= data[detail_row]["project_title"] %}</td><th style="width:15%">Company Name</th><td>{%= data[detail_row]["company"]%}</td></tr>
                         <tr><th>Project Manager</th><td>{%= data[detail_row]["project_manager"] %}</td><th>Date</th><td>{%= frappe.datetime.str_to_user(data[detail_row]["date"])%}</td></tr>
                     </table>
@@ -55,8 +152,8 @@
                 
                 <!-- Task List -->
                 
-                <div class="table_div" style="margin-top: 10px;">
-                    <table class="table table-bordered table-condensed">
+                <div class="table_div">
+                    <table class="table table-bordered table-condensed" style="margin-top:5px;">
                         <thead style="display: table-header-group;">
                             {% if (filters.show_priorities) { %}
                             <tr><th colspan="8">Project Details</th></tr>
@@ -64,11 +161,11 @@
                             <tr><th colspan="7">Project Details</th></tr>
                             {% } %}
                             <tr style="font-size: 9px;font-weight: 700;">
-                                <th style="width:15%">Status</th>
-                                <th style="width:10%">Start Date</th>
-                                <th style="width:10%">End Date</th>
+                                <th style="width:7%">Status</th>
+                                <th style="width:7%">Start Date</th>
+                                <th style="width:7%">End Date</th>
                                 <th style="width:5%">Duration</th>
-                                <th style="width:20%">Task Name</th>
+                                <th style="width:25%">Task Name</th>
                                 <th style="width:10%">Assignee</th>
                                 <th>Description</th>
                                 {% if (filters.show_priorities) { %}

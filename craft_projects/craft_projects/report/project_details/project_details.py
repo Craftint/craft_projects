@@ -161,7 +161,8 @@ def get_task_type_dict(data):
 	for type in types:
 		type_weight.append({"type": type, "weight": frappe.db.get_value("Task Type", type, "weight")})
 		
-	type_weight = sorted(type_weight, key=lambda d:d["weight"])
+	if type_weight:
+		type_weight = sorted(type_weight, key=lambda d:d["weight"])
 
 	return type_weight
 	
