@@ -193,7 +193,7 @@ border-bottom: 1px solid black;
                                         <td>{%= data[i]["status"] %}</td>
                                         <td align="center">{%= frappe.datetime.str_to_user(data[i]["actual_start_date"])%}</td>
                                         <td align="center">{%= frappe.datetime.str_to_user(data[i]["completed_on"])%}</td>
-                                        <td align="center">{%= data[i]["expected_time"]%}</td>
+                                        <td align="center">{%= data[i]["actual_duration"]%}</td>
                                         <td>{%= data[i]["subject"]%}</td>
                                         <td align="center">
                                             {% if (data[i]["teams_involved"])  { %}
