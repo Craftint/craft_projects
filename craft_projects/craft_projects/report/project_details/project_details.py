@@ -59,7 +59,7 @@ def get_columns(filters):
 		},
 		{
 			'label':'Duration',
-			'fieldname':'expected_time',
+			'fieldname':'actual_duration',
 			'fieldtype':'Float'
 		},
 		{
