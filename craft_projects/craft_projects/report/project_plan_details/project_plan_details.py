@@ -128,7 +128,7 @@ def get_data(filters):
 
 	# Sort by actual date
 	try:
-		data = sorted(tasks, key=lambda d:d["actual_start_date"])
+		data = sorted(tasks, key=lambda d:d["exp_start_date"])
 	except:
 		data = tasks
 
