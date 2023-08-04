@@ -1,0 +1,45 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-08-04 10:08:59.124542",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "Project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "letter_head": "Logo",
+ "modified": "2023-08-04 10:09:22.744856",
+ "modified_by": "Administrator",
+ "module": "Craft Projects",
+ "name": "Project Plan Details",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Task",
+ "report_name": "Project Plan Details",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Projects User"
+  },
+  {
+   "role": "Projects Manager"
+  },
+  {
+   "role": "Auditor"
+  },
+  {
+   "role": "Employee Self Service"
+  }
+ ]
+}
