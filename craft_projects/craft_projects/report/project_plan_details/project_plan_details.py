@@ -13,8 +13,8 @@ def get_columns(filters):
 		{
 			'label':_('Name'),
 			'fieldname':'name',
-			'fieldtype':'Link',
-			'options':'Task'
+			'fieldtype':'Data',
+			# 'options':'Task'
 		},
 		{
 			'label':_('Status'),
@@ -70,8 +70,7 @@ def get_columns(filters):
 		{
 			'label':_('Employee'),
 			'fieldname':'employee',
-			'fieldtype':'Link',
-			'options':'Employee'
+			'fieldtype':'Data',
 		},
 		{
 			'label':_('Employee Name'),
@@ -92,8 +91,8 @@ def get_columns(filters):
 		{
 			'label':'Type',
 			'fieldname':'type',
-			'fieldtype':'Link',
-			'options':'Task Type',
+			'fieldtype':'Data',
+			# 'options':'Task Type',
 		},
 		{
 			'label':'Task Description',
@@ -133,6 +132,13 @@ def get_data(filters):
 		data = tasks
 
 	type_weight = get_task_type_dict(data)
+
+	# Sort by name
+	try:
+		data = sorted(tasks, key=lambda d:d["name"])
+	except:
+		data = tasks
+
 
 	# Get details
 	project_manager = ""
