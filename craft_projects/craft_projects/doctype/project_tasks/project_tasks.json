@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-27 14:17:03.498440",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "task",
+  "status",
+  "actual_start_date",
+  "completed_on",
+  "exp_start_date",
+  "exp_end_date",
+  "actual_duration",
+  "column_break_wfnq6",
+  "subject",
+  "employee",
+  "employee_name",
+  "teams_involved",
+  "type",
+  "description",
+  "is_milestone",
+  "display",
+  "display_order"
+ ],
+ "fields": [
+  {
+   "fieldname": "task",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Task"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "actual_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Actual Start Date"
+  },
+  {
+   "fieldname": "completed_on",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Actual End Date"
+  },
+  {
+   "fieldname": "exp_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expected Start Date"
+  },
+  {
+   "fieldname": "exp_end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expected End Date"
+  },
+  {
+   "fieldname": "actual_duration",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Duration"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Task Name"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "teams_involved",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Assignee"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Type"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Task Description"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_milestone",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Milestone"
+  },
+  {
+   "default": "1",
+   "fieldname": "display",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Display"
+  },
+  {
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "label": "Display Order"
+  },
+  {
+   "fieldname": "column_break_wfnq6",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-09-27 17:59:10.891254",
+ "modified_by": "Administrator",
+ "module": "Craft Projects",
+ "name": "Project Tasks",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

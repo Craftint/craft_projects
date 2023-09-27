@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{project}-{YY}{MM}-{#}",
+ "creation": "2023-09-27 14:03:39.819479",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "sort_by",
+  "column_break_o28f9",
+  "is_milestone",
+  "reverse",
+  "section_break_dyf9n",
+  "project_tasks"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sort_by",
+   "fieldtype": "Select",
+   "label": "Sort By",
+   "options": "\nName\nExpected Start Date\nExpected End Date\nActual Start Date\nActual End Date"
+  },
+  {
+   "fieldname": "column_break_o28f9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_milestone",
+   "fieldtype": "Check",
+   "label": "Is Milestone"
+  },
+  {
+   "fieldname": "section_break_dyf9n",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "project_tasks",
+   "fieldtype": "Table",
+   "label": "Project Tasks",
+   "options": "Project Tasks"
+  },
+  {
+   "default": "0",
+   "fieldname": "reverse",
+   "fieldtype": "Check",
+   "label": "Reverse"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-09-27 18:00:39.505782",
+ "modified_by": "Administrator",
+ "module": "Craft Projects",
+ "name": "Project Report Generator",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
